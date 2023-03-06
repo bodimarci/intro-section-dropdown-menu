@@ -1,25 +1,114 @@
 import { useState } from "react";
 import logo from "../assets/logo.svg";
+import upArrow from "../assets/icon-arrow-up.svg";
+import downArrow from "../assets/icon-arrow-down.svg";
+import calendar from "../assets/icon-calendar.svg";
+import todo from "../assets/icon-todo.svg";
+import reminders from "../assets/icon-reminders.svg";
+import planning from "../assets/icon-planning.svg";
+import hamburger from "../assets/icon-menu.svg";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const [dropDown, setDropDown] = useState(true);
+  const [dropDown2, setDropDown2] = useState(true);
 
   return (
-    <nav className=' px-12 pt-8 border text-medium-grey'>
-      <div className='flex'>
-        <div className='pr-8'>
-          <img src={logo} alt='snap' />
+    <nav className='grid h-[80px] items-center px-2 text-medium-grey md:px-12'>
+      <div className='flex items-center justify-between'>
+        <div className='pr-3'>
+          <img src={logo} alt='snap' className='' />
         </div>
-        <section className='grid w-full grid-cols-2 my-auto border'>
-          <div className='flex space-x-5 '>
-            <p>Features</p>
-            <p>Company</p>
-            <p>Careers</p>
-            <p>About</p>
+        <div className='cursor-pointer place-items-end sm:hidden'>
+          <img src={hamburger} alt='' />
+        </div>
+
+        <section className='top-0 my-auto hidden w-full grid-cols-2 items-center justify-center sm:grid'>
+          <div className='ml-6 flex space-x-6 md:space-x-10'>
+            <div className='flex'>
+              {/* Features toggle */}
+              <button
+                onClick={() => setDropDown(!dropDown)}
+                className='navtext'
+              >
+                Features
+              </button>
+              {dropDown ? (
+                <img src={downArrow} alt='' className='my-auto ml-2' />
+              ) : (
+                <img src={upArrow} alt='' className='my-auto ml-2' />
+              )}
+
+              {/* Dropdown */}
+              <div
+                className={
+                  dropDown
+                    ? "hidden"
+                    : "absolute mt-10 -ml-16 rounded-xl  bg-almost-white p-6 text-sm drop-shadow-2xl"
+                }
+              >
+                <ul>
+                  <li className='navtext mb-2 flex'>
+                    <span className='mr-3'>
+                      <img src={todo} alt='' />
+                    </span>
+                    Todo List
+                  </li>
+                  <li className='navtext mb-2 flex'>
+                    <span className='mr-3'>
+                      <img src={calendar} alt='' />
+                    </span>
+                    Calendar
+                  </li>
+                  <li className='navtext mb-2 flex'>
+                    <span className='mr-3'>
+                      <img src={reminders} alt='' />
+                    </span>
+                    Reminders
+                  </li>
+                  <li className='navtext flex'>
+                    <span className='mr-3'>
+                      <img src={planning} alt='' />
+                    </span>
+                    Planning
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div className='flex'>
+              <button
+                onClick={() => setDropDown2(!dropDown2)}
+                className='navtext'
+              >
+                Company
+              </button>
+              {dropDown2 ? (
+                <img src={downArrow} alt='' className='my-auto ml-2' />
+              ) : (
+                <img src={upArrow} alt='' className='my-auto ml-2' />
+              )}
+              <div
+                className={
+                  dropDown2
+                    ? "hidden"
+                    : "absolute mt-10  rounded-xl  bg-almost-white p-6 text-sm drop-shadow-2xl"
+                }
+              >
+                <ul>
+                  <li className='navtext mb-2 flex'>History</li>
+                  <li className='navtext mb-2 flex'>Our Team</li>
+                  <li className='navtext flex'>Blog</li>
+                </ul>
+              </div>
+            </div>
+            <p className='navtext'>Careers</p>
+            <p className='navtext'>About</p>
           </div>
-          <div className='flex justify-end  space-x-5'>
-            <p>Login</p>
-            <button className="">Register</button>
+          <div className='flex justify-end space-x-6 md:space-x-10'>
+            <p className='navtext my-auto'>Login</p>
+            <button className='navtext rounded-2xl border border-medium-grey py-2 px-3 hover:border-almost-black'>
+              Register
+            </button>
           </div>
         </section>
       </div>
