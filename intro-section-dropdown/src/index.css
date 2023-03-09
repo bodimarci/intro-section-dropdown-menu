@@ -11,3 +11,7 @@ body {
 .navtext {
     @apply hover:text-almost-black duration-200 cursor-pointer text-sm
 }
+
+.navtextmobile {
+    @apply hover:text-almost-black duration-200 cursor-pointer text-lg
+}

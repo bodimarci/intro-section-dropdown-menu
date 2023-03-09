@@ -22,26 +22,29 @@ const Hero = () => {
               team rituals, and <br className='hidden sm:block' /> watch
               productivity soar.
             </p>
-            <div className="flex justify-center sm:justify-start sm:mt-0 mt-6">
-                <button className=' rounded-xl border border-almost-black bg-almost-black px-4 py-2 text-almost-white duration-200 hover:bg-almost-white hover:text-almost-black'>
-              Learn more
-            </button>
+            <div className='mt-6 flex justify-center sm:mt-0 sm:justify-start'>
+              <button className=' rounded-xl border border-almost-black bg-almost-black px-4 py-2 text-almost-white duration-200 hover:bg-almost-white hover:text-almost-black'>
+                Learn more
+              </button>
             </div>
-            
           </div>
           <div className='mt-12 max-w-[30rem] lg:mt-24'>
-            <ul className='flex justify-between sm:mx-0'>
+            <ul className='flex justify-between sm:mx-0 '>
               <li>
-                <img src={databiz} alt='' className='sm:scale-100 scale-75' />
+                <img src={databiz} alt='' className='scale-75 sm:scale-100' />
               </li>
               <li>
-                <img src={audiophile} alt='' className='sm:scale-100 scale-75' />
+                <img
+                  src={audiophile}
+                  alt=''
+                  className='scale-75 sm:scale-100'
+                />
               </li>
               <li>
-                <img src={meet} alt='' className='sm:scale-100 scale-75' />
+                <img src={meet} alt='' className='scale-75 sm:scale-100' />
               </li>
               <li>
-                <img src={maker} alt='' className='sm:scale-100 scale-75' />
+                <img src={maker} alt='' className='scale-75 sm:scale-100' />
               </li>
             </ul>
           </div>

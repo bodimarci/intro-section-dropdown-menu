@@ -7,6 +7,7 @@ import todo from "../assets/icon-todo.svg";
 import reminders from "../assets/icon-reminders.svg";
 import planning from "../assets/icon-planning.svg";
 import hamburger from "../assets/icon-menu.svg";
+import closeMenu from "../assets/icon-close-menu.svg";
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
@@ -20,9 +21,102 @@ const Navbar = () => {
           <img src={logo} alt='snap' className='' />
         </div>
         <div className='cursor-pointer place-items-end sm:hidden'>
-          <img src={hamburger} alt='' />
+          <button onClick={() => setNav(!nav)}>
+            <img src={hamburger} alt='menu' />
+          </button>
         </div>
-
+        {/* mobile menu */}
+        {nav ? (
+          <section className=' absolute right-0 bottom-0 z-10 min-h-[100%]  w-[65%] bg-[#FFF] p-6  sm:hidden '>
+            <div className='flex justify-end'>
+              <button onClick={() => setNav(!nav)}>
+                <img src={closeMenu} alt='X' />
+              </button>
+            </div>
+            <ul className='my-8 space-y-4'>
+              <li className='flex'>
+                <button
+                  onClick={() => setDropDown(!dropDown)}
+                  className='navtextmobile'
+                >
+                  Features
+                </button>
+                {dropDown ? (
+                  <img src={downArrow} alt='' className='my-auto ml-2' />
+                ) : (
+                  <img src={upArrow} alt='' className='my-auto ml-2' />
+                )}
+              </li>
+              <ul className={dropDown ? "hidden" : "space-y-4"}>
+                <li className='navtext mb-2 flex'>
+                  <span className='mr-3'>
+                    <img src={todo} alt='' />
+                  </span>
+                  Todo List
+                </li>
+                <li className='navtext mb-2 flex'>
+                  <span className='mr-3'>
+                    <img src={calendar} alt='' />
+                  </span>
+                  Calendar
+                </li>
+                <li className='navtext mb-2 flex'>
+                  <span className='mr-3'>
+                    <img src={reminders} alt='' />
+                  </span>
+                  Reminders
+                </li>
+                <li className='navtext flex'>
+                  <span className='mr-3'>
+                    <img src={planning} alt='' />
+                  </span>
+                  Planning
+                </li>
+              </ul>
+              <li className='flex'>
+                <button
+                  onClick={() => setDropDown2(!dropDown2)}
+                  className='navtextmobile'
+                >
+                  Company
+                </button>
+                {dropDown2 ? (
+                  <img src={downArrow} alt='' className='my-auto ml-2' />
+                ) : (
+                  <img src={upArrow} alt='' className='my-auto ml-2' />
+                )}
+              </li>
+              <ul className={dropDown2 ? "hidden" : "space-y-4"}>
+                <li className='navtext mb-2 flex'>History</li>
+                <li className='navtext mb-2 flex'>Our Team</li>
+                <li className='navtext flex'>Blog</li>
+              </ul>
+              <li>
+                <p className='navtextmobile'>Careers</p>
+              </li>
+              <li>
+                <p className='navtextmobile'>About</p>
+              </li>
+            </ul>
+            <div className='mb-4 flex justify-center'>
+              <p className='navtext'>Login</p>
+            </div>
+            <div className='flex justify-center'>
+              <button className='navtext w-full rounded-2xl border border-medium-grey py-2 px-3 hover:border-almost-black'>
+                Register
+              </button>
+            </div>
+          </section>
+        ) : (
+          ""
+        )}
+        <div
+          className={
+            nav
+              ? "absolute left-0 bottom-0 min-h-full w-[35%] bg-almost-black opacity-60 sm:hidden"
+              : "hidden"
+          }
+        ></div>
         <section className='top-0 my-auto hidden w-full grid-cols-2 items-center justify-center sm:grid'>
           <div className='ml-6 flex space-x-6 md:space-x-10'>
             <div className='flex'>
